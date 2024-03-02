@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package = "./user/gen;user";
+package user;
+
+message UserInfo {
+  int64  ID       = 10;
+  string Username = 20;
+  string Password = 30;
+}
+
+service UserServer {
+  rpc Login(LoginReq) returns (LoginResp);
+}
+
+message LoginReq {
+  map<string,string> where = 10;
+}
+
+message LoginResp {
+  UserInfo user = 1;
+}
